@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e40000">
+  <title>Udyam Digital | Airtel Business</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Udyam Digital home">
+      <span class="airtel-mark">airtel</span>
+      <span class="brand-divider"></span>
+      <span>Udyam <strong>Digital</strong><small>BUSINESS ONBOARDING</small></span>
+    </a>
+    <div class="topbar-right">
+      <span class="avatar" aria-label="Business workspace">UD</span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">A simpler way to get started</p>
+        <h1>One conversation. A clearer path to business-ready.</h1>
+        <p class="subhead">Explore a guided recommendation, an upfront quote, consent-first KYC lookup, and a sample order journey.</p>
+      </div>
+      <div class="welcome-note"><span class="spark">✦</span><span><strong>Built for small businesses</strong><small>Clear guidance · connected journey</small></span></div>
+    </section>
+
+    <nav class="tabs" aria-label="Prototype sections">
+      <button class="tab active" data-tab="overview"><span>01</span> Overview</button>
+      <button class="tab" data-tab="advisor"><span>02</span> Advisor & quote</button>
+      <button class="tab" data-tab="kyc"><span>03</span> Smart KYC</button>
+      <button class="tab" data-tab="orders"><span>04</span> Order tracker</button>
+      <button class="tab" data-tab="field"><span>05</span> Field handoff</button>
+    </nav>
+
+    <section id="overview" class="view active">
+      <div class="section-heading">
+        <div><p class="eyebrow">The opportunity</p><h2>A better first experience, measured end to end.</h2></div>
+        <span class="source-tag">Based on supplied synthetic leads · Apr–Jun 2026</span>
+      </div>
+      <div id="metric-grid" class="metric-grid" aria-live="polite">
+        <div class="metric skeleton"></div><div class="metric skeleton"></div><div class="metric skeleton"></div><div class="metric skeleton"></div>
+      </div>
+      <div class="dashboard-grid">
+        <article class="card funnel-card">
+          <div class="card-heading"><div><p class="eyebrow">Current funnel</p><h3>Where leads reach</h3></div><span class="muted">5,000 leads</span></div>
+          <div id="funnel" class="funnel" aria-live="polite"></div>
+          <p class="footnote">Counts show cumulative leads reaching each stage.</p>
+        </article>
+        <article class="card promise-card">
+          <p class="eyebrow">The proposed experience</p><h3>Less chasing. More clarity.</h3>
+          <ul class="promise-list">
+            <li><span class="promise-icon">⌕</span><span><strong>Discover needs</strong><small>Ask about business size, sites, and connectivity.</small></span></li>
+            <li><span class="promise-icon">₹</span><span><strong>Show a grounded quote</strong><small>Use catalogue prices and explicit eligibility rules.</small></span></li>
+            <li><span class="promise-icon">✓</span><span><strong>Verify with consent</strong><small>Look up synthetic registry entries; mask identifiers.</small></span></li>
+            <li><span class="promise-icon">↗</span><span><strong>Keep the next step visible</strong><small>Show a sample order journey and human handoff.</small></span></li>
+          </ul>
+          <button class="button button-dark" data-go="advisor">Try the advisor <span>→</span></button>
+        </article>
+      </div>
+      <p class="disclaimer"><strong>Prototype notice:</strong> Businesses and identifiers in the supplied dataset are fictional. This prototype does not connect to Airtel systems, live registries, payment, e-sign, WhatsApp, or an AI model.</p>
+    </section>
+
+    <section id="advisor" class="view">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 · Discover & recommend</p><h2>Tell us a little about the business.</h2><p class="section-intro">Recommendations follow catalogue rules; products and prices are not generated.</p></div>
+        <span class="step-badge">Typical journey · 2 min</span>
+      </div>
+      <div class="advisor-layout">
+        <article class="card form-card">
+          <div class="form-intro"><span class="step-number">1</span><span><strong>Business profile</strong><small>Only fields needed for this recommendation</small></span></div>
+          <form id="advisor-form">
+            <label for="segment">What kind of business do you run?</label>
+            <select id="segment" name="segment" required>
+              <option value="professional">Professional office</option>
+              <option value="multi">Small multi-site business</option>
+              <option value="micro">Micro retail & services</option>
+              <option value="manufacturing">Small manufacturer</option>
+            </select>
+            <div class="two-col">
+              <div><label for="city-tier">City tier</label><select id="city-tier" name="city_tier"><option value="1">Tier 1</option><option value="2" selected>Tier 2</option></select></div>
+              <div><label for="employees">Employees</label><input id="employees" name="employees" type="number" min="1" max="100000" value="6" required></div>
+            </div>
+            <label for="sites">Business sites</label><input id="sites" name="sites" type="number" min="1" max="1000" value="1" required>
+            <label for="gstin">GSTIN <span class="optional">optional for this quote</span></label>
+            <input id="gstin" name="gstin" type="text" maxlength="15" autocomplete="off" placeholder="Use a synthetic registry entry, if available">
+            <p class="field-note">A GSTIN is only checked against the supplied fictional registry. Leave blank to see products that do not require one.</p>
+            <button class="button button-red full" type="submit">Build my recommendation <span>→</span></button>
+            <p id="advisor-error" class="error" role="alert"></p>
+          </form>
+        </article>
+        <article id="recommendation" class="card result-card empty-result">
+          <div class="empty-art"><span>✦</span></div>
+          <p class="eyebrow">Your recommendation</p><h3>A bundle shaped around your needs.</h3>
+          <p>Complete the business profile to see eligible services, an indicative monthly range, and setup fees from the product catalogue.</p>
+          <div class="result-assurance"><span>✓</span> Eligibility rules applied <span>·</span> Quote calculated from catalogue</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="kyc" class="view">
+      <div class="section-heading">
+        <div><p class="eyebrow">02 · Verify with consent</p><h2>Start with a lookup, not another long form.</h2><p class="section-intro">This local simulation checks the supplied synthetic registry only. It never stores the identifier.</p></div>
+        <span class="step-badge">Consent comes first</span>
+      </div>
+      <div class="kyc-layout">
+        <article class="card kyc-card">
+          <div class="form-intro"><span class="step-number">2</span><span><strong>Registry lookup</strong><small>GSTIN or Udyam · masked result</small></span></div>
+          <div class="privacy-notice"><span class="lock">⌑</span><div><strong>Why do we need this?</strong><p>To check the business registration for this prototype. The identifier is sent to your local server, is not saved, and is not used for marketing.</p></div></div>
+          <form id="kyc-form">
+            <label for="registry-type">Lookup type</label>
+            <select id="registry-type"><option value="gstin">GSTIN</option><option value="udyam">Udyam registration</option></select>
+            <label for="registry-id">Registration number</label>
+            <input id="registry-id" autocomplete="off" placeholder="Enter a synthetic number from the sample data" required>
+            <label class="consent-check"><input id="kyc-consent" type="checkbox" required><span>I consent to this one-time registry lookup for the purpose described above. I can stop at any time.</span></label>
+            <button class="button button-dark full" type="submit">Give consent & look up <span>→</span></button>
+            <p id="kyc-error" class="error" role="alert"></p>
+          </form>
+          <div id="kyc-result" class="lookup-result" aria-live="polite"></div>
+        </article>
+        <aside class="card privacy-card">
+          <p class="eyebrow">Privacy by design</p><h3>Trust is part of the journey.</h3>
+          <div class="privacy-row"><span>01</span><div><strong>Purpose limited</strong><small>Lookup for onboarding only; no advertising use.</small></div></div>
+          <div class="privacy-row"><span>02</span><div><strong>Minimise collection</strong><small>Check a registry first; request only what's needed.</small></div></div>
+          <div class="privacy-row"><span>03</span><div><strong>Mask identifiers</strong><small>Results show only a masked registration number.</small></div></div>
+          <div class="privacy-row"><span>04</span><div><strong>Retention</strong><small>No lookup history or uploaded documents are stored.</small></div></div>
+          <p class="prototype-note">This prototype does not implement document OCR or biometric checks.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="orders" class="view">
+      <div class="section-heading">
+        <div><p class="eyebrow">03 · Track the next step</p><h2>Keep the journey moving, without the status chase.</h2><p class="section-intro">Create an in-memory sample order from the last recommendation. No payment or activation is triggered.</p></div>
+        <span class="step-badge">A visible path to activation</span>
+      </div>
+      <div class="tracker-layout">
+        <article class="card create-order-card">
+          <span class="order-icon">↗</span><p class="eyebrow">Continue from your quote</p><h3>Review your order</h3>
+          <p>See how an order reference, estimated install timeline, and next-step checklist could appear to a business owner.</p>
+          <button id="create-order" class="button button-red" disabled>Continue to order <span>→</span></button>
+          <p id="order-hint" class="field-note">Build a recommendation in Advisor & quote first.</p>
+        </article>
+        <article id="order-result" class="card order-result empty-result">
+          <div class="empty-art"><span>⌁</span></div><p class="eyebrow">Order tracker</p><h3>Your next step will show here.</h3><p>This sample tracker is stored temporarily and is cleared when the server restarts.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="field" class="view">
+      <div class="section-heading">
+        <div><p class="eyebrow">04 · Assisted handoff</p><h2>Give people the context to help sooner.</h2><p class="section-intro">A simple, explainable queue prioritises leads that may need a human follow-up.</p></div>
+        <span class="source-tag">Synthetic sample · no contact details</span>
+      </div>
+      <article class="card queue-card">
+        <div class="card-heading"><div><p class="eyebrow">Partner & field queue</p><h3>Priority follow-ups</h3></div><span class="muted">Top 12 · score out of 100</span></div>
+        <div class="table-wrap">
+          <table><thead><tr><th>Lead</th><th>Segment</th><th>City</th><th>Last stage</th><th>Priority</th><th>Why it's surfaced</th></tr></thead><tbody id="lead-rows"><tr><td colspan="6" class="loading-cell">Loading synthetic leads…</td></tr></tbody></table>
+        </div>
+        <p class="footnote">The transparent priority score uses segment, site count, funnel stage, GSTIN-on-file, and source. It is not a production lead-scoring model.</p>
+      </article>
+    </section>
+
+    <footer><span><span class="footer-mark">airtel</span> Udyam Digital</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
